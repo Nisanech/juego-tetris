@@ -8,7 +8,7 @@
     --gridBackground: #73BCD9;
     --indicatorBackground: #30D9BA;
     --playButton: #1E82D9;
-    --actionsButton: #8973D9;
+    --directionButton: #8973D9;
     --resetButton: #F27ECA;
 }
 
@@ -69,4 +69,54 @@ p {
 .grid {
     margin-top: 2rem;
     background-color: var(--gridBackground);
+}
+
+button {
+    width: 4rem;
+    height: 4rem;
+    font-family: var(--principalFont);
+}
+
+button:last-of-type {
+    width: 7rem;
+}
+
+.buttons {
+    max-width: 120rem;
+    margin-top: 4rem;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem; 
+}
+
+[class*="buttons__"] {
+    border: none;
+    border-radius: .5rem;
+    box-shadow: 2px 2px 5px -2px rgba(233,233,233,1);
+}
+
+.icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    filter: invert(100%);
+}
+
+.buttons__direction .icon {
+    width: 3rem;
+    height: 3rem;
+}
+
+.buttons__play {
+    background-color: var(--playButton);
+}
+
+.buttons__direction {
+    background-color: var(--directionButton);
+}
+
+.buttons__reset {
+    background-color: var(--resetButton);
+    color: var(--white);
+    font-size: 1.2rem;
+    text-align: center;
 }
