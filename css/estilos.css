@@ -65,3 +65,8 @@ p {
 .indicator__value {
     font-size: 2.6rem;
 }
+
+.grid {
+    margin-top: 2rem;
+    background-color: var(--gridBackground);
+}
