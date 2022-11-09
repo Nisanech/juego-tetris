@@ -1,3 +1,17 @@
+:root {
+    /* Font */
+    --principalFont: 'Rubik Bubbles', cursive;
+    --title: #1E82D9;
+    --white: #FFFFFF;
+
+    /* Color Palette */
+    --gridBackground: #73BCD9;
+    --indicatorBackground: #30D9BA;
+    --playButton: #1E82D9;
+    --actionsButton: #8973D9;
+    --resetButton: #F27ECA;
+}
+
 /** Globales **/
 html {
     font-size: 62.5%;
