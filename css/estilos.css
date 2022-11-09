@@ -120,3 +120,14 @@ button:last-of-type {
     font-size: 1.2rem;
     text-align: center;
 }
+
+.footer {
+    width: 100%;
+    margin-top: 6rem;
+    padding: 3rem 2rem;
+    background-color: var(--playButton);
+    text-align: center;
+    color: var(--white);
+    font-size: 1.6rem;
+    line-height: 1.5;
+}
