@@ -350,6 +350,40 @@ function tetrominoPrevious() {
     }
   }
 
+  // Verificar el tiempo del último tetromino ubicado
+  // Aquí se define la velocidad del juego
+  let time1 = new Date();
+
+  if (time1 - time > speed) {
+    // Si es momento para un nuevo tetromino
+    let columns = {};
+
+    for (i = 0; i < oLength; i++) {
+      x = horizontalPosition + tetromino[tetrominoOrientation][i][0];
+      y = verticalPosition + tetromino[tetrominoOrientation][i][1];
+
+      if (y < 0) continue;
+
+      !isNaN(columns[x]) || (columns[x] = y);
+      columns[x] = Math.max(columns[x], y);
+    }
+
+    for (i in columns)
+      if (columns[i] == verticalSquares - 1 || grid[i][columns[i] + 1] != 1) {
+        fixed = true;
+        if (newTetromino) {
+          alert("Fin del juego");
+          resetGrid();
+        }
+
+        speed = originSpeed;
+        return;
+      }
+
+    time = time1;
+    verticalPosition += 1;
+  }
+
   newTetromino = false;
 }
 
