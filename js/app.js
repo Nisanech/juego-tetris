@@ -387,6 +387,23 @@ function tetrominoPrevious() {
   newTetromino = false;
 }
 
+// Eliminar las líneas que ya están completas
+function removeFullLines() {
+  let line, j, i, k;
+
+  for ( i = verticalSquares - 1; i > 0; i-- ) {
+    line = true;
+
+    for ( j = 0; j < horizontalSquares; j++ ) if ( typeof grid[j][i] != 'string' ) line = false;
+
+    if ( line ) {
+      for ( k = i; k > 0; k-- )
+        for ( j = 0; j < horizontalSquares; j++ ) grid[j][k] = grid[j][k - 1];
+      i++
+    }
+  }
+}
+
 // Dibujar líneas de la cuadricula
 function line( fromX, fromY, toX, toY ) {
   context.beginPath();
