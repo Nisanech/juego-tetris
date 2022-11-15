@@ -306,6 +306,53 @@ function resetGrid() {
 }
 resetGrid();
 
+// Ciclo principal del juego
+function tetrominoPrevious() {
+  // Borrar las celdas donde estaba el tetromino
+  let color = 1;
+  let removeLines = false;
+
+  if (fixed) {
+    removeLines = true;
+    fixed = false;
+    newTetromino = true;
+    color = tetromino.fill;
+    verticalPosition = 0;
+    horizontalPosition = 4;
+    tetrominoOrientation = 0;
+  }
+
+  for (let i = 0; i < tetrominoPosition.length; i++) {
+    grid[tetrominoPosition[i][0]][tetrominoPosition[i][1]] = color;
+  }
+
+  tetrominoPosition = [];
+
+  removeLines && removeFullLines();
+
+  if (newTetromino) {
+    // Siguiente tetromino aleatorio
+    tetromino = tetrominos[Math.floor(Math.random() * tetrominos.length)];
+  }
+
+  let x,
+    y,
+    oLength = tetromino[tetrominoOrientation].length;
+
+  // Ubicar el tetromino en la cuadricula sin que se salga de los límites horizontales
+  for (i = 0; i < oLength; i++) {
+    x = horizontalPosition + tetromino[tetrominoOrientation][i][0];
+    y = verticalPosition + tetromino[tetrominoOrientation][i][1];
+
+    if (grid[x][y]) {
+      grid[x][y] = 2;
+      tetrominoPosition.push([x, y]);
+    }
+  }
+
+  newTetromino = false;
+}
+
 // Dibujar líneas de la cuadricula
 function line( fromX, fromY, toX, toY ) {
   context.beginPath();
