@@ -494,3 +494,43 @@ function drawGrid() {
   for (i = 1; i < heightCanvas; i++)
     line(0, i * squareSize, widthCanvas, i * squareSize);
 }
+
+// Lectura de las teclas para mover y rotar los tetrominos
+let running = false,
+  drawLoop,
+  tetrominoLoop;
+
+document.onkeydown = function (e) {
+  let key = e.which;
+
+  if (running && key === 38 && canRotate()) {
+    // Flecha arriba para rotar
+    tetrominoOrientation = ++tetrominoOrientation % 4;
+  } else if (key === 40) {
+    // Flecha abajo para acelerar caída del tetromino
+    speed = dropSpeed;
+  } else if (key === 32) {
+    // Espacio para iniciar o pausar el juego
+    if (running) {
+      clearInterval(drawLoop);
+      clearInterval(tetrominoLoop);
+    } else {
+      drawLoop = setInterval(drawGrid, 50);
+      tetrominoLoop = setInterval(tetrominoPrevious, 50);
+    }
+
+    running = !running;
+  } else if (running && key === 37 && canMove(-1)) {
+    // Flecha izquierda para mover a la izquierda
+    horizontalPosition--;
+  } else if (running && key === 39 && canMove(1)) {
+    // Flecha derecha para mover a la derecha
+    horizontalPosition++;
+  }
+};
+
+// Al soltar la tecla
+document.onkeyup = function (e) {
+  // Cancelar la caída
+  if (e.which === 40) speed = originSpeed;
+};
