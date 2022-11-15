@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tetris</title>
 
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Bubbles&display=swap" rel="stylesheet"> 
+
     <!-- Normalize CSS -->
     <link rel="stylesheet" href="css/normalize.css">
 
@@ -13,52 +18,56 @@
     <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
-    <canvas id="myCanvas" width="1000" height="1000"></canvas>
+    <h1 class="heading">Tetris</h1>
 
-    <script>
-        var canvas = document.getElementById("myCanvas");
-        var ctx = canvas.getContext("2d");
-        ctx.lineWidth = 1;
-        ctx.strokeStyle = "#000000";
+    <!--* Indicator Game *-->
+    <div class="indicator">
+        <div class="indicator__score">
+            <p>Puntaje</p>
+            <p class="indicator__value">0</p>
+        </div>
 
-        for (var x = 1; x<1000; x += 40){
-            ctx.moveTo(x, 0);
-            ctx.lineTo(x, 1000);
-        }
-        for (var y = 1; y < 1000; y += 40){
-            ctx.moveTo(0, y );
-            ctx.lineTo(y, 1000);
-        }
+        <div class="indicator__line">
+            <p>Líneas</p>
+            <p class="indicator__value">0</p>
+        </div>
+    </div>
 
-        ctx.stroke();
+    <!--* Grid *-->
+    <canvas id="grid" width="0" height="0" class="grid"></canvas>
 
+    <!--* Buttons *-->
+    <div class="buttons">
+        <button class="buttons__play">
+            <img src="img/ui-play.svg" alt="Icon play" class="icon">
+        </button>
 
+        <button class="buttons__direction">
+            <img src="img/arrow-left.svg" alt="Icon arrow-left" class="icon">
+        </button>
 
-
-
-
-
-        // for (let i = 0; i < 1000; i++) {
-
-        //     ctx.beginPath();
-        //     ctx.rect(20, 40, 40, 40);
-        //     ctx.fillStyle = "#FF0000";
-        //     ctx.fill();
-        //     ctx.closePath();
-        // }
-    
-        // ctx.beginPath();
-        // ctx.rect(20, 40, 40, 40);
-        // ctx.fillStyle = "#FF0000";
-        // ctx.fill();
-        // ctx.closePath();
+        <button class="buttons__direction">
+            <img src="img/arrow-down.svg" alt="Icon arrow-down" class="icon">
+        </button>
         
-        // ct.beginPath();
-        // ct.rect(20, 80, 40, 40);
-        // ct.fillStyle = "#000";
-        // ct.fill();
-        // ct.closePath();
-    </script>
-    
+        <button class="buttons__direction">
+            <img src="img/arrow-right.svg" alt="Icon arrow-down" class="icon">
+        </button>
+
+        <button class="buttons__direction">
+            <img src="img/undo.svg" alt="Icon rotate" class="icon">
+        </button>
+
+        <button class="buttons__reset">Reiniciar</button>
+    </div>
+
+    <!--* Footer *-->
+    <footer class="footer">
+        <p class="footer_copyright">Todos los derechos reservados. 2022</p>
+
+        <p class="footer__autors">Desarrollado por <br> Nicolás Santiago Naranjo <br> Miguel Roa</p>
+    </footer>
+    <!-- JS -->
+    <script src="js/app.js"></script>
 </body>
 </html>
