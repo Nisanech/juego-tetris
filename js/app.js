@@ -423,6 +423,31 @@ function canMove( side ) {
   return true;
 }
 
+// Rotación de los tetrominos
+function canRotate() {
+  let newOrientation = ( tetrominoOrientation + 1 ) % 4;
+  let to = tetromino[newOrientation], x, y; // to = tetrominoOrientation
+
+  for ( let i = 0, oLength = to.length; i < oLength; i++ ) {
+    x = horizontalPosition + to[i][0];
+    y = verticalPosition + to[i][1];
+
+    // Verificar si el tetromino se puede rotar estando al borde de la cuadricula
+    if ( !grid[x] ) {
+      let modification = x < 0 ? 1 : -1;
+
+      horizontalPosition += modification;
+
+      if ( canRotate() ) return true;
+      else horizontalPosition -= modification;
+    }
+
+    if ( !grid[x][y] || typeof grid[x][y] === 'string' ) return false;
+  }
+
+  return true;
+}
+
 // Dibujar líneas de la cuadricula
 function line( fromX, fromY, toX, toY ) {
   context.beginPath();
