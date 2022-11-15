@@ -404,25 +404,6 @@ function removeFullLines() {
   }
 }
 
-// Verificar si el tetromino se puede mover horizontalmente
-function canMove( side ) {
-  let maxFunc = side == 1 ? Math.max : Math.min;
-  let rows = {}, x, y;
-
-  for ( let i = 0, oLength = tetromino[tetrominoOrientation].length; i < oLength; i++ ) {
-    y = verticalPosition + tetromino[tetrominoOrientation][i][1];
-    x = horizontalPosition + tetromino[tetrominoOrientation][i][0] + side; // Mover temporalmente el tetromino hacia los lados
-    !isNaN( rows[y] ) || ( rows[y] = x ); // Obtener el cuadrado hacia la derecha o izquierda en cada fila
-    rows[y] = maxFunc( rows[y], x );
-  }
-
-  // Verificar si el cuadrado hacia la derecha o izquierda se sale de la posición
-  for ( i in rows )
-    if ( rows[i] < 0 || rows[i] > horizontalSquares - 1 || grid[rows[i]][i] != 1 )
-      return false;
-  return true;
-}
-
 // Dibujar líneas de la cuadricula
 function line( fromX, fromY, toX, toY ) {
   context.beginPath();
