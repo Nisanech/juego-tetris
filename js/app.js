@@ -520,7 +520,7 @@ document.onkeydown = function (e) {
     }
 
     running = !running;
-  } else if (running && key === 37 && canMove(-1)) {
+  } else if ( running && key === 37 && canMove(-1)){
     // Flecha izquierda para mover a la izquierda
     horizontalPosition--;
   } else if (running && key === 39 && canMove(1)) {
@@ -534,3 +534,45 @@ document.onkeyup = function (e) {
   // Cancelar la caída
   if (e.which === 40) speed = originSpeed;
 };
+
+//Boton de reinicio juego
+const btnReset = document.querySelector("#reset");
+//console.log(btnReset);
+ 
+//Evento Listener del boton reset
+btnReset.addEventListener("click", function(){
+  resetGrid();
+})
+//Boton para mover hacia la izq
+const btnLeft = document.querySelector("#btnLeft");
+
+
+//Evento Listener de boton izq
+btnLeft.addEventListener("click", function(){
+  horizontalPosition--;
+})
+
+//Boton para mover hacia la derecha
+const btnRight = document.querySelector("#btnRight");
+
+//Evento Listener del boton hacia la derecha
+btnRight.addEventListener("click", function(){
+  horizontalPosition++;
+})
+
+//Boton para mover hacia abajo
+const btnDown = document.querySelector("#btnDown");
+
+//Evento Listener del boton hacia abajo
+btnDown.addEventListener("click", function(){
+  speed = dropSpeed;
+})
+
+//Boton para mover hacia arriba, rotar
+const btnUp = document.querySelector("#btnUp");
+
+//Evento Listener del boton rotar
+btnUp.addEventListener("click", function(){
+  tetrominoOrientation = ++tetrominoOrientation % 4;
+})
+
