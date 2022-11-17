@@ -535,6 +535,25 @@ document.onkeyup = function (e) {
   if (e.which === 40) speed = originSpeed;
 };
 
+//Boton de iniciar juego
+const btnPlay = document.querySelector("#play");
+
+//Evento Listener del boton Play
+btnPlay.addEventListener("click", function(){
+  if (running) {
+    clearInterval(drawLoop);
+    clearInterval(tetrominoLoop);
+    btnPlay.setAttribute("src", "img/ui-play.svg")
+  } else {
+    drawLoop = setInterval(drawGrid, 50);
+    tetrominoLoop = setInterval(tetrominoPrevious, 50);
+    btnPlay.setAttribute("src", "img/ui-pause.svg")
+    
+  }
+  
+  running = !running;
+})
+
 //Boton de reinicio juego
 const btnReset = document.querySelector("#reset");
 //console.log(btnReset);
@@ -564,9 +583,18 @@ btnRight.addEventListener("click", function(){
 const btnDown = document.querySelector("#btnDown");
 
 //Evento Listener del boton hacia abajo
-btnDown.addEventListener("click", function(){
-  speed = dropSpeed;
-})
+let controlSpeed = -1;
+
+btnDown.addEventListener('click', function(){
+  controlSpeed += 1;
+
+  if (controlSpeed % 2 == 0) {
+    speed = dropSpeed;
+  } else {
+    speed = originSpeed;
+  }
+});
+
 
 //Boton para mover hacia arriba, rotar
 const btnUp = document.querySelector("#btnUp");
