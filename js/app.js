@@ -588,3 +588,18 @@ btnRight.addEventListener("click", function(){
   
 });
 
+//Boton para mover hacia abajo
+const btnDown = document.querySelector("#btnDown");
+// Variable para el control de la velocidad
+let controlSpeed = -1;
+//Evento Listener del boton hacia abajo
+btnDown.addEventListener('click', function(){
+  controlSpeed += 1;
+  
+  // Se hace un condicional para el cambio de velocidad al primer click
+  if (controlSpeed % 2 == 0) {
+    speed = dropSpeed;
+  } else {   // Se cambia la velocidad al segundo click
+    speed = originSpeed;
+  }
+});
