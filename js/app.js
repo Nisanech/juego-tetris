@@ -572,9 +572,19 @@ const btnLeft = document.querySelector("#btnLeft");
 
 //Evento Listener de boton izq
 btnLeft.addEventListener("click", function(){
-    canMove(-1);
-    horizontalPosition--;
+    if (running && canMove(-1)){
+      horizontalPosition--;
+    }
 });
 
+//Boton para mover hacia la derecha
+const btnRight = document.querySelector("#btnRight");
 
+//Evento Listener del boton hacia la derecha
+btnRight.addEventListener("click", function(){
+  if (running && canMove(1)){
+    horizontalPosition++;
+  };
+  
+});
 
