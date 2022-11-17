@@ -543,16 +543,18 @@ btnPlay.addEventListener("click", function(){
   if (running) {
     clearInterval(drawLoop);
     clearInterval(tetrominoLoop);
-    btnPlay.setAttribute("src", "img/ui-play.svg")
+    // Se modifica el  atributo de la img
+    btnPlay.setAttribute("src", "img/ui-play.svg");
   } else {
     drawLoop = setInterval(drawGrid, 50);
     tetrominoLoop = setInterval(tetrominoPrevious, 50);
-    btnPlay.setAttribute("src", "img/ui-pause.svg")
+    // Se modifica el  atributo de la img
+    btnPlay.setAttribute("src", "img/ui-pause.svg");
     
   }
   
   running = !running;
-})
+});
 
 //Boton de reinicio juego
 const btnReset = document.querySelector("#reset");
@@ -561,46 +563,7 @@ const btnReset = document.querySelector("#reset");
 //Evento Listener del boton reset
 btnReset.addEventListener("click", function(){
   resetGrid();
-})
-//Boton para mover hacia la izq
-const btnLeft = document.querySelector("#btnLeft");
-
-
-//Evento Listener de boton izq
-btnLeft.addEventListener("click", function(){
-  horizontalPosition--;
-})
-
-//Boton para mover hacia la derecha
-const btnRight = document.querySelector("#btnRight");
-
-//Evento Listener del boton hacia la derecha
-btnRight.addEventListener("click", function(){
-  horizontalPosition++;
-})
-
-//Boton para mover hacia abajo
-const btnDown = document.querySelector("#btnDown");
-
-//Evento Listener del boton hacia abajo
-let controlSpeed = -1;
-
-btnDown.addEventListener('click', function(){
-  controlSpeed += 1;
-
-  if (controlSpeed % 2 == 0) {
-    speed = dropSpeed;
-  } else {
-    speed = originSpeed;
-  }
 });
 
 
-//Boton para mover hacia arriba, rotar
-const btnUp = document.querySelector("#btnUp");
-
-//Evento Listener del boton rotar
-btnUp.addEventListener("click", function(){
-  tetrominoOrientation = ++tetrominoOrientation % 4;
-})
 
