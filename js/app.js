@@ -566,4 +566,13 @@ btnReset.addEventListener("click", function(){
 });
 
 
+//Boton para mover hacia la izq
+const btnLeft = document.querySelector("#btnLeft");
+
+
+//Evento Listener de boton izq
+btnLeft.addEventListener("click", function(){
+  horizontalPosition--;
+});
+
 
