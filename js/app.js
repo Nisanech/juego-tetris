@@ -603,3 +603,14 @@ btnDown.addEventListener('click', function(){
     speed = originSpeed;
   }
 });
+
+
+//Boton para mover hacia arriba, rotar
+const btnUp = document.querySelector("#btnUp");
+
+//Evento Listener del boton rotar
+btnUp.addEventListener("click", function(){
+  if(running && canRotate()){
+    tetrominoOrientation = ++tetrominoOrientation % 4;
+  };
+});
