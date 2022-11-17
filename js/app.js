@@ -386,7 +386,9 @@ function tetrominoPrevious() {
 
   newTetromino = false;
 }
-
+// variables conteo de lineas y puntaje
+  let countLine = 0;
+  let score = 0;
 // Eliminar las líneas que ya están completas
 function removeFullLines() {
   let line, j, i, k;
@@ -401,9 +403,29 @@ function removeFullLines() {
         for ( j = 0; j < horizontalSquares; j++ ) grid[j][k] = grid[j][k - 1];
       i++
     }
+    //condicional if para el conteo por linea y puntaje
+  
+    if (line) {
+      line =1;
+      countLine++;
+      document.getElementById("countLine").innerHTML = countLine;
+
+      score = countLine * 5;
+      document.getElementById("totalScore").innerHTML = score;
+    }
   }
 }
-
+//funcion para contar el puntaje
+function addScore(){
+  if(removeFullLines){
+    score += 10
+    scoreDisplay.innerHTML = score
+    
+    for (let i = 0; i < columns; i+= widthCanvas) {
+      const rows =[i, i+1, i+2, i+3, i+4, i+5, i+6, i+7]
+    }
+}
+}
 // Verificar si el tetromino se puede mover horizontalmente
 function canMove( side ) {
   let maxFunc = side == 1 ? Math.max : Math.min;
@@ -614,3 +636,4 @@ btnUp.addEventListener("click", function(){
     tetrominoOrientation = ++tetrominoOrientation % 4;
   };
 });
+
