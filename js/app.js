@@ -572,7 +572,9 @@ const btnLeft = document.querySelector("#btnLeft");
 
 //Evento Listener de boton izq
 btnLeft.addEventListener("click", function(){
-  horizontalPosition--;
+    canMove(-1);
+    horizontalPosition--;
 });
+
 
 
