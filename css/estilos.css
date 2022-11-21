@@ -244,6 +244,12 @@ button {
     color: var(--white);
     font-size: 1.6rem;
     line-height: 1.5;
-    position: fixed;
-    bottom: 0;
+    
+}
+
+@media (min-width: 768px) { 
+    .footer {
+        position: fixed;
+        bottom: 0;
+    }
 }
