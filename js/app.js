@@ -388,7 +388,9 @@ function tetrominoPrevious() {
 
   newTetromino = false;
 }
-
+// variables conteo de lineas y puntaje
+  let countLine = 0;
+  let score = 0;
 // Eliminar las líneas que ya están completas
 function removeFullLines() {
   let line, j, i, k;
@@ -403,9 +405,29 @@ function removeFullLines() {
         for ( j = 0; j < horizontalSquares; j++ ) grid[j][k] = grid[j][k - 1];
       i++
     }
+    //condicional if para el conteo por linea y puntaje
+  
+    if (line) {
+      line =1;
+      countLine++;
+      document.getElementById("countLine").innerHTML = countLine;
+
+      score = countLine * 5;
+      document.getElementById("totalScore").innerHTML = score;
+    }
   }
 }
-
+//funcion para contar el puntaje
+function addScore(){
+  if(removeFullLines){
+    score += 10
+    scoreDisplay.innerHTML = score
+    
+    for (let i = 0; i < columns; i+= widthCanvas) {
+      const rows =[i, i+1, i+2, i+3, i+4, i+5, i+6, i+7]
+    }
+}
+}
 // Verificar si el tetromino se puede mover horizontalmente
 function canMove( side ) {
   let maxFunc = side == 1 ? Math.max : Math.min;
@@ -520,7 +542,7 @@ document.onkeydown = function (e) {
     }
 
     running = !running;
-  } else if (running && key === 37 && canMove(-1)) {
+  } else if ( running && key === 37 && canMove(-1)){
     // Flecha izquierda para mover a la izquierda
     horizontalPosition--;
   } else if (running && key === 39 && canMove(1)) {
@@ -534,3 +556,95 @@ document.onkeyup = function (e) {
   // Cancelar la caída
   if (e.which === 40) speed = originSpeed;
 };
+
+//Boton de iniciar juego
+const btnPlay = document.querySelector("#play");
+
+//Evento Listener del boton Play
+btnPlay.addEventListener("click", function(){
+  if (running) {
+    clearInterval(drawLoop);
+    clearInterval(tetrominoLoop);
+    // Se modifica el  atributo de la img
+    btnPlay.setAttribute("src", "img/ui-play.svg");
+  } else {
+    drawLoop = setInterval(drawGrid, 50);
+    tetrominoLoop = setInterval(tetrominoPrevious, 50);
+    // Se modifica el  atributo de la img
+    btnPlay.setAttribute("src", "img/ui-pause.svg");
+    
+  }
+  
+  running = !running;
+});
+
+//Boton de reinicio juego
+const btnReset = document.querySelector("#reset");
+//console.log(btnReset);
+ 
+//Evento Listener del boton reset
+btnReset.addEventListener("click", function(){
+  resetGrid();
+});
+
+
+//Boton para mover hacia la izq
+const btnLeft = document.querySelector("#btnLeft");
+
+
+//Evento Listener de boton izq
+btnLeft.addEventListener("click", function(){
+    if (running && canMove(-1)){
+      horizontalPosition--;
+    }
+});
+
+//Boton para mover hacia la derecha
+const btnRight = document.querySelector("#btnRight");
+
+//Evento Listener del boton hacia la derecha
+btnRight.addEventListener("click", function(){
+  if (running && canMove(1)){
+    horizontalPosition++;
+  };
+  
+});
+
+//Boton para mover hacia abajo
+const btnDown = document.querySelector("#btnDown");
+// Variable para el control de la velocidad
+let controlSpeed = -1;
+//Evento Listener del boton hacia abajo
+btnDown.addEventListener('click', function(){
+  controlSpeed += 1;
+  
+  // Se hace un condicional para el cambio de velocidad al primer click
+  if (controlSpeed % 2 == 0) {
+    speed = dropSpeed;
+  } else {   // Se cambia la velocidad al segundo click
+    speed = originSpeed;
+  }
+});
+
+
+//Boton para mover hacia arriba, rotar
+const btnUp = document.querySelector("#btnUp");
+
+//Evento Listener del boton rotar
+btnUp.addEventListener("click", function(){
+  if(running && canRotate()){
+    tetrominoOrientation = ++tetrominoOrientation % 4;
+  };
+});
+
+const open = document.getElementById('open');//varible open, trae al elemento por su id open
+const modal_container = document.getElementById('modal_container');//varible modal_container haciendo referencia al id modal_container
+const close = document.getElementById('close');// variable close trae el elemento por su id close
+//Evento listener click, con la funcion para la variable añadiendo la clase show
+open.addEventListener('click', () => {
+  modal_container.classList.add('show');  
+});
+//Evento listener click, con la funcion para la variable removiendo la clase show
+close.addEventListener('click', () => {
+  modal_container.classList.remove('show');
+});
