@@ -299,7 +299,9 @@ function resetGrid() {
   for (let i = 0; i < horizontalSquares; i++) {
     grid[i] = [];
 
-    for (let j = 0; j < verticalSquares; j++) grid[i][j] = 1;
+    for (let j = 0; j < verticalSquares; j++) {
+      grid[i][j] = 1;
+    }
   }
 
   (fixed = false), (newTetromino = true), (verticalPosition = tetrominoOrientation = 0), (horizontalPosition = 6);
@@ -318,7 +320,7 @@ function tetrominoPrevious() {
     newTetromino = true;
     color = tetromino.fill;
     verticalPosition = 0;
-    horizontalPosition = 4;
+    horizontalPosition = 6;
     tetrominoOrientation = 0;
   }
 
