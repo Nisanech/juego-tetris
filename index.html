@@ -18,6 +18,96 @@
     <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
-    
+    <h1 class="heading">Tetris</h1>
+
+    <!--* Indicator Game *-->
+    <div class="indicator">
+        <div class="indicator__score">
+            <p>Puntaje</p>
+            <p class="indicator__value" id="totalScore">0</p>
+        </div>
+
+        <div class="indicator__line">
+            <p>Líneas</p>
+            <p class="indicator__value" id="countLine">0</p>
+        </div>
+    </div>
+
+    <!--* Grid *-->
+    <main>
+        <canvas id="grid" width="0" height="0" class="grid"></canvas>
+
+    <!--* Buttons *-->
+    <div class="buttons">
+        <button class="buttons__play">
+            <img src="img/ui-play.svg" id="play" alt="Icon play" class="icon">
+        </button>
+
+        <button class="buttons__direction">
+            <img src="img/arrow-left.svg" id="btnLeft" alt="Icon arrow-left" class="icon">
+        </button>
+
+        <button class="buttons__direction">
+            <img src="img/arrow-down.svg" id="btnDown" alt="Icon arrow-down" class="icon">
+        </button>
+        
+        <button class="buttons__direction">
+            <img src="img/arrow-right.svg" id="btnRight" alt="Icon arrow-down" class="icon">
+        </button>
+
+        <button class="buttons__direction">
+            <img src="img/undo.svg" id="btnUp" alt="Icon rotate" class="icon">
+        </button>
+
+        <button class="buttons__reset" id="reset">Reiniciar</button>
+    </div>
+
+
+    <h1>Instrucciones</h1>
+    <button id="open">
+        Haga Click
+      </button>
+      
+      <div id="modal_container" class="modal-container">
+        <div class="modal">
+          
+
+            <ul>
+                <li><h2> <strong>1. </strong> Presione la tecla barra espaciadora o el boton Play para comenzar.</h2></li>
+                <li><h2><strong>2. </strong>Haga click sobre el boton reinicio, para reiniciar el juego.</h2></li>
+                <li><h2><strong>3. </strong>Para moverse hacia los lados utilice las flechas del teclado o presione los botones.</h2></li>
+                <li><h2><strong>4. </strong>Para rotar la ficha del juego, utilice la flecha del teclado hacia arriba o presione el boton de rotar.</h2></li>
+                <li><h2><strong>5. </strong>Para acelerar la caida de la ficha utilice la flecha del teclado hacia abajo o preione el boton hacia abajo.</h2></li>
+                <li><h2><strong>6. </strong>Presione el boton hacia abajo 1 vez para avanzar rapido, presionelo de nuevo para volver a la velocidad anterior.</h2></li>
+            </ul>
+          <button id="close">Cerrar</button>
+        </div>
+      </div>
+
+  
+    <!-- <div class="container">
+        <div class="card">
+            <h1>Instrucciones de pantalla Juego Tetris</h1>
+            <ol>
+                <li><h1>Presione la tecla barra espaciadora o el boton Play para comenzar.</h1></li>
+                <li><h1>Presione el boton reinicio para reiniciar el juego.</h1></li>
+                <li><h1>Para moverse hacia los lados utilice las flechas del teclado o presione los botones.</h1></li>
+                <li><h1>Para rotar la ficha del juego, utilice la tecla de flecha hacia arriba o presione el boton de rotar.</h1></li>
+                <li><h1>Para acelerar la caida de la ficha utilice la tecla con flecha hacia abajo o preione el boton hacia abajo.</h1></li>
+                <li><h1>Presione el boton hacia abajo 1 vez para avanzar rapido, presionelo 2 vez para volver a la velocidad de antes.</h1></li>
+            </ol>
+
+        </div>
+
+    </div> -->
+
+    <!--* Footer *-->
+    <footer class="footer">
+        <p class="footer_copyright">Todos los derechos reservados. 2022</p>
+
+        <p class="footer__autors">Desarrollado por <br> Nicolás Santiago Naranjo <br> Miguel Roa</p>
+    </footer>
+    <!-- JS -->
+    <script src="js/app.js"></script>
 </body>
 </html>
