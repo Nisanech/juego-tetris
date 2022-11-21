@@ -165,6 +165,12 @@ button:last-of-type {
     margin-top: 3rem;
 }
 
+@media (min-width: 1024px) { 
+    .ventana-modal {
+        flex-direction: column;
+    }
+}
+
 button {
     background-color: #47a386;
     border: 0;
@@ -172,8 +178,6 @@ button {
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     color: #fff;
-
-
 }
 
 .modal-container {
