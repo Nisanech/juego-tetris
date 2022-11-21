@@ -417,17 +417,7 @@ function removeFullLines() {
     }
   }
 }
-//funcion para contar el puntaje
-function addScore(){
-  if(removeFullLines){
-    score += 10
-    scoreDisplay.innerHTML = score
-    
-    for (let i = 0; i < columns; i+= widthCanvas) {
-      const rows =[i, i+1, i+2, i+3, i+4, i+5, i+6, i+7]
-    }
-}
-}
+
 // Verificar si el tetromino se puede mover horizontalmente
 function canMove( side ) {
   let maxFunc = side == 1 ? Math.max : Math.min;
@@ -584,6 +574,11 @@ const btnReset = document.querySelector("#reset");
  
 //Evento Listener del boton reset
 btnReset.addEventListener("click", function(){
+  countLine = 0;
+  score = 0;
+
+  document.getElementById("countLine").innerHTML = countLine;
+  document.getElementById("totalScore").innerHTML = score;
   resetGrid();
 });
 
