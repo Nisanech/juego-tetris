@@ -273,7 +273,7 @@ let tetrominoOrientation = 2;
 let tetrominoPosition = [];
 
 // Desplazamiento horizontal y vertical
-let horizontalPosition = 4;
+let horizontalPosition = 0;
 let verticalPosition = 0;
 
 // Nuevo tetromino
@@ -496,9 +496,7 @@ function drawGrid() {
 }
 
 // Lectura de las teclas para mover y rotar los tetrominos
-let running = false,
-  drawLoop,
-  tetrominoLoop;
+let running = false, drawLoop, tetrominoLoop;
 
 document.onkeydown = function (e) {
   let key = e.which;
